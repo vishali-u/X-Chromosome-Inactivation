@@ -9,7 +9,6 @@ bettermc_url <- 'https://cran.r-project.org/src/contrib/Archive/bettermc/betterm
 if (! requireNamespace("bettermc", quietly = TRUE)) {
   install.packages(bettermc_url, repos = NULL, type = "source")
 }
-install.packages(bettermc_url, repos = NULL, type = "source")
 
 # Install dependencies for miloR
 if (! requireNamespace("BiocManager", quietly = TRUE)) {
