@@ -3,6 +3,9 @@
 # ERROR: dependencies ‘bettermc’, ‘miloR’, ‘alleleIntegrator’, 
 # ‘ComplexHeatmap’, ‘Rsamtools’ are not available for package ‘inactiveXX’
 
+if (! requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
 
 # Install bettermc
 bettermc_url <- 'https://cran.r-project.org/src/contrib/Archive/bettermc/bettermc_1.2.1.tar.gz'
