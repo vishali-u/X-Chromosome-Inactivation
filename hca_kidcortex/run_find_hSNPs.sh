@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH --cpus-per-task=12
-#SBATCH --mem=128G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=256G
 #SBATCH --job-name=find_hSNPs
 #SBATCH --time=12:00:00
 #SBATCH --output=find_hSNPs.out
