@@ -1,29 +1,31 @@
 # Call heterozygous SNPs on the HCA kidney cortex data
 
 library(inactiveXX)
-library(future)
 library(Rsamtools)
 library(seqinr)
+library(devtools)
 
+# Load reference genome
 refGenomePath <- '/home/umaiyal1/scratch/ref_package/GRCh38/fasta/genome.fa'
+
 bamsPath <- '/home/umaiyal1/scratch/hca_kidcortex/bams'
 
-nParallel <- 12
+nParallel <- 8
 
-# Load in BAM files for Control 5
+# Load in BAM files for Control 5 (correspond to a female donor)
 
-cont5Bam1 <- scanBam(paste(bamsPath, '/Cont5_S8_L004_R1_001Aligned.sortedByCoord.out.bam', sep = ''))
-#cont5Bam2 <- scanBam(paste(bamsPath, '/Cont5_S8_L004_R2_001Aligned.sortedByCoord.out.bam', sep = ''))
-#cont5Bam3 <- scanBam(paste(bamsPath, '/Control_5_S6_L001_R1_001Aligned.sortedByCoord.out.bam', sep = ''))
-#cont5Bam4 <- scanBam(paste(bamsPath, '/Control_5_S6_L001_R2_001Aligned.sortedByCoord.out.bam', sep = ''))
-#cont5Bam5 <- scanBam(paste(bamsPath, '/Control_5_S6_L001_R3_001Aligned.sortedByCoord.out.bam', sep = ''))
+bam1 <- scanBam(paste(bamsPath, '/Cont5_S8_L004_R1_001Aligned.sortedByCoord.out.bam', sep = ''))
+names(bam1[[1]])
 
-#bams <- c(cont5Bam1, cont5Bam2)
+bam2 <- scanBam(paste(bamsPath, '/Cont5_S8_L004_R2_001Aligned.sortedByCoord.out.bam', sep = ''))
+names(bam1[[1]])
 
-# Load refGenome file
+bams <- c(bam1, bam2)
+names(bams)
+
 refGenome <- read.fasta(refGenomePath)
 
-hSNPs <- hetSNPsFromRNA(cont5Bam1,
+hSNPs <- hetSNPsFromRNA(bams,
                         refGenome,
-                        outputs = sprintf('%s_scRNA_1kSNPs_XCnts.tsv', names(cont5Bam1)),
+                        outputs = sprintf('%s_scRNA_1kSNPs_XCnts.tsv', names(bams)),
                         nParallel = nParallel)
