@@ -4,8 +4,6 @@ r = getOption("repos")
 r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 
-<<<<<<< HEAD
-=======
 if (! requireNamespace("zoo", quietly = TRUE)) {
   install.packages("zoo")
 }
@@ -14,7 +12,6 @@ if (! requireNamespace("checkmate", quietly = TRUE)) {
   install.packages("checkmate")
 }
 
->>>>>>> 828286dd8329f9a18e091e2ac1a8b293de4a399d
 if (! requireNamespace("devtools", quietly = TRUE)) {
   install.packages("devtools")
 }
@@ -439,6 +436,11 @@ if (! requireNamespace("RcppTOML", quietly = TRUE)) {
 
 if (! requireNamespace("tidyverse", quietly = TRUE)) {
   install.packages("tidyverse")
+}
+
+# gsl package requires bcftools to be installed
+if (! requireNamespace("gsl", quietly = TRUE)) {
+  install.packages("gsl")
 }
 
 devtools::install_github('VanLoo-lab/ascat/ASCAT')
