@@ -5,6 +5,8 @@ library(Rsamtools)
 library(seqinr)
 library(devtools)
 
+outDir <- '/home/umaiyal1/X-Chromosome-Inactivation/results'
+
 refGenome <- '/home/umaiyal1/scratch/ref_package/GRCh38/fasta/genome.fa'
 
 bam1 <- '/home/umaiyal1/scratch/hca_blood/bams/JP_RIK_B001_L001_5GEX_H005.R1Aligned.sortedByCoord.out.bam'
@@ -23,5 +25,5 @@ bams10X
 
 hSNPs <- hetSNPsFromRNA(bams10X,
                         refGenome,
-                        outputs = sprintf('%s_XCnts.tsv', names(bams10X)),
+                        outputs = file.path(outDir, sprintf('%s_XCnts.tsv', names(bams10X))),
                         nParallel = nParallel)
