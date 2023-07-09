@@ -1,4 +1,4 @@
-# Call heterozygous SNPs on the HCA kidney cortex data
+# Call heterozygous SNPs on the one sample from the HCA AIDA data
 
 library(inactiveXX)
 library(Rsamtools)
